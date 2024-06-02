@@ -24,10 +24,15 @@ const Button = (props) => {
             style={{
                 backgroundColor: buttonColor,
                 color: buttonTextColor,
+                padding: '20px 35px',
+                borderRadius: '5px',
+                border: 'none',
+                outline: 'none',
+                cursor: 'pointer',
             }}
         >
             {props.children}
-        </button>
+        </button >
     );
 }
 

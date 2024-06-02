@@ -3,7 +3,7 @@ import './ProductList.css';
 
 const ProductList = (props) => {
     return (
-        <div>
+        <div className='product_list'>
             ProductList
         </div>
     );
