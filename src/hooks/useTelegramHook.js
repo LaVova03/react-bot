@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useTelegram = () => {
+export const useTelegramHook = () => {
     const [tg, setTg] = useState(null);
     const [user, setUser] = useState(null);
 
@@ -31,5 +31,3 @@ const useTelegram = () => {
         user
     };
 }
-
-export default useTelegram;
