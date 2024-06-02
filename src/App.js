@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
-import { UseTelegram } from './hooks/usetelegram';
+import UseTelegram  from './hooks/usetelegram';
 
 const App = () => {
 
