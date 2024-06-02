@@ -1,17 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Form.css';
+import { useTelegramHook } from '../../hooks/useTelegramHook';
 
 const Form = (props) => {
+    const { tg } = useTelegramHook();
 
     const [data, setData] = useState({
-        county: '',
-        srteet: '',
+        country: '',
+        street: '',
         subject: '',
-    })
+    });
+
+    useEffect(() => {
+        if (tg && tg.MainButton) {
+            tg.MainButton.setParams({
+                text: 'Отправить данные',
+            });
+        }
+    }, [tg]);
+
+    useEffect(() => {
+        if (tg && tg.MainButton) {
+            if (!data.country || !data.street) {
+                tg.MainButton.hide();
+            } else {
+                tg.MainButton.show();
+            }
+        }
+    }, [data, tg]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setData(prevData => ({
+        setData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
@@ -25,28 +45,28 @@ const Form = (props) => {
                 name='country'
                 placeholder='Страна'
                 className='input'
-                value={data.county || ''}
-                onChange={(e) => handleChange(e.target.value)}
+                value={data.country || ''}
+                onChange={handleChange}
             />
             <input
                 type='text'
-                name='srteet'
+                name='street'
                 placeholder='Улица'
                 className='input'
-                value={data.srteet || ''}
-                onChange={(e) => handleChange(e.target.value)}
+                value={data.street || ''}
+                onChange={handleChange}
             />
             <select
                 className='select'
                 name='subject'
                 value={data.subject}
-                onChange={(e) => handleChange(e.target.value)}
+                onChange={handleChange}
             >
-                <option value={'physical'}>Физ.лицо</option>
-                <option value={'legal'}>Юр.лицо</option>
+                <option value='physical'>Физ.лицо</option>
+                <option value='legal'>Юр.лицо</option>
             </select>
         </div>
     );
-}
+};
 
 export default Form;
