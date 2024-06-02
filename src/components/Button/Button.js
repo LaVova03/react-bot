@@ -24,7 +24,9 @@ const Button = (props) => {
             style={{
                 backgroundColor: buttonColor,
                 color: buttonTextColor,
-                padding: '20px 35px',
+                height: '40px',
+                width: '70px',
+                marginTop: '10px',
                 borderRadius: '5px',
                 border: 'none',
                 outline: 'none',
