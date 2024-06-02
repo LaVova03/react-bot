@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from '../components/Button/Button';
-import UseTelegram from '../hooks/usetelegram';
+import useTelegram from '../hooks/useTelegram';
 
 const Header = () => {
 
-    const { user, onClose } = UseTelegram;
+    const { user, onClose } = useTelegram;
 
     return (
         <div className={'header'}>

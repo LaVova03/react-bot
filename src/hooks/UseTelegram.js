@@ -1,19 +1,9 @@
-import { useState, useEffect } from 'react';
+const tg = window.Telegram.WebApp;
 
-const UseTelegram = (props) => {
-
-    const [tg, setTg] = useState(null);
-
-    useEffect(() => {
-        if (window.Telegram && window.Telegram.WebApp) {
-            setTg(window.Telegram.WebApp);
-        }
-    }, []);
+const useTelegram = () => {
 
     const onClose = () => {
-        if (tg) {
-            tg.close();
-        }
+        tg.close();
     };
 
     const onToggleButton = () => {
@@ -31,4 +21,4 @@ const UseTelegram = (props) => {
     };
 }
 
-export default UseTelegram;
+export default useTelegram;
