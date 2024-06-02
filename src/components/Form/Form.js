@@ -10,14 +10,19 @@ const Form = (props) => {
     })
 
     const handleChange = (e) => {
-        console.log(e)
-    }
+        const { name, value } = e.target;
+        setData(prevData => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
     return (
         <div className='form'>
             <h3>Заполните форму</h3>
             <input
                 type='text'
+                name='country'
                 placeholder='Страна'
                 className='input'
                 value={data.county || ''}
@@ -25,6 +30,7 @@ const Form = (props) => {
             />
             <input
                 type='text'
+                name='srteet'
                 placeholder='Улица'
                 className='input'
                 value={data.srteet || ''}
@@ -32,6 +38,7 @@ const Form = (props) => {
             />
             <select
                 className='select'
+                name='subject'
                 value={data.subject}
                 onChange={(e) => handleChange(e.target.value)}
             >
