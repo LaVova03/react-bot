@@ -1,23 +1,34 @@
-const tg = window.Telegram.WebApp;
+import { useEffect, useState } from 'react';
 
 const useTelegram = () => {
+    const [tg, setTg] = useState(null);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        if (window.Telegram?.WebApp) {
+            const tgInstance = window.Telegram.WebApp;
+            setTg(tgInstance);
+            setUser(tgInstance.initDataUnsafe?.user);
+        }
+    }, []);
 
     const onClose = () => {
-        tg.close();
+        tg?.close();
     };
 
     const onToggleButton = () => {
-        if (tg.MainButton.isVisible) {
+        if (tg?.MainButton?.isVisible) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
     };
+
     return {
         onClose,
         onToggleButton,
         tg,
-        user: tg.initDataUnsafe?.user
+        user
     };
 }
 
