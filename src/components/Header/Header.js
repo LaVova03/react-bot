@@ -16,7 +16,7 @@ const Header = () => {
         <div className='header'>
             <Button onClick={onClose}>Закрыть</Button>
             <span className='username'>{user?.username}</span>
-            <button onClick={onToggleButton}>Toggle</button>
+            <Button onClick={onToggleButton}>Toggle</Button>
         </div>
     );
 }

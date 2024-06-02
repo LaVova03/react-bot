@@ -9,6 +9,10 @@ export const useTelegramHook = () => {
             const tgInstance = window.Telegram.WebApp;
             setTg(tgInstance);
             setUser(tgInstance.initDataUnsafe?.user);
+
+            // Устанавливаем CSS-переменные темы
+            document.documentElement.style.setProperty('--tg-theme-button-color', tgInstance.themeParams.button_color || '#0088cc');
+            document.documentElement.style.setProperty('--tg-theme-button-text-color', tgInstance.themeParams.button_text_color || '#ffffff');
         }
     }, []);
 
