@@ -13,7 +13,6 @@ const Form = (props) => {
 
     const onSendData = useCallback(() => {
         if (tg) {
-            console.log('Sending data:', data);
             tg.sendData(JSON.stringify(data));
         }
     }, [tg, data]);
