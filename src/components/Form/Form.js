@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Form.css';
 import { useTelegramHook } from '../../hooks/useTelegramHook';
 
@@ -8,19 +8,26 @@ const Form = (props) => {
     const [data, setData] = useState({
         country: '',
         street: '',
-        subject: '',
+        subject: 'physical',
     });
 
+    const onSendData = useCallback(() => {
+        tg.setData(JSON.stringify(data));
+    }, [tg, data]);
+
     useEffect(() => {
-        if (tg && tg.MainButton) {
+        tg.WebApp.onEvent('mainButtonClicked', onSendData);
+        return () => {
+            tg.WebApp.offEvent('mainButtonClicked', onSendData);
+        };
+    }, [tg.WebApp, onSendData]);
+
+    useEffect(() => {
+        if (tg?.MainButton) {
             tg.MainButton.setParams({
                 text: 'Отправить данные',
             });
-        }
-    }, [tg]);
 
-    useEffect(() => {
-        if (tg && tg.MainButton) {
             if (!data.country || !data.street) {
                 tg.MainButton.hide();
             } else {
@@ -45,7 +52,7 @@ const Form = (props) => {
                 name='country'
                 placeholder='Страна'
                 className='input'
-                value={data.country || ''}
+                value={data.country}
                 onChange={handleChange}
             />
             <input
@@ -53,7 +60,7 @@ const Form = (props) => {
                 name='street'
                 placeholder='Улица'
                 className='input'
-                value={data.street || ''}
+                value={data.street}
                 onChange={handleChange}
             />
             <select
