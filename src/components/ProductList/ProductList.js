@@ -10,11 +10,11 @@ const ProductList = (props) => {
 
     const getTotalPrice = (items) => {
         return items.reduce((acc, item) => {
-            return acc += item.price
-        }, 0)
+            return acc + parseInt(item.price);
+        }, 0);
     }
 
-    const onAdd = () => {
+    const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItem = [];
 
@@ -31,25 +31,26 @@ const ProductList = (props) => {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(newItem)}`
-            })
+            });
         }
     }
 
-    const product = [
+    const products = [
         { id: '1', title: 'Джинсы', price: '5000', description: 'Синего цвета' },
         { id: '2', title: 'Куртка', price: '4000', description: 'Красного цвета' },
         { id: '3', title: 'Футболка', price: '3000', description: 'Зеленого цвета' },
         { id: '4', title: 'Носки', price: '2000', description: 'Желтого цвета' },
         { id: '5', title: 'Кроссовки', price: '1000', description: 'Черного цвета' },
         { id: '6', title: 'Брюки', price: '500', description: 'Белого цвета' },
-    ]
+    ];
 
     return (
         <div className='product_list'>
-            {product.map(item => (
+            {products.map(item => (
                 <ProductItem
+                    key={item.id}
                     product={item}
-                    onAdd={onAdd}
+                    onAdd={() => onAdd(item)}
                     className={'item'}
                 />
             ))}
