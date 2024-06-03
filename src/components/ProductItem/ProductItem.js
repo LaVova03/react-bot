@@ -30,6 +30,7 @@ const ProductItem = ({ product, className, onAdd }) => {
             style={{
                 backgroundColor: buttonTextColor,
                 border: `1px solid ${buttonColor}`,
+                color: 'black'
             }}>
             <div
                 className='img'
