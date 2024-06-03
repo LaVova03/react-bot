@@ -11,7 +11,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route index element={<ProductList />} />
-        <Route path={'form'} element={<Form />} />
+        <Route path={'/form'} element={<Form />} />
       </Routes>
     </div>
   );
