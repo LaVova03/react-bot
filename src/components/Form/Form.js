@@ -10,12 +10,12 @@ const Form = (props) => {
         street: '',
         subject: 'physical',
     });
-
     const onSendData = useCallback(() => {
         if (tg) {
-            tg.setData(JSON.stringify(data));
+            tg.sendData(JSON.stringify(data));
         }
     }, [tg, data]);
+
 
     useEffect(() => {
         if (tg && tg.WebApp) {
