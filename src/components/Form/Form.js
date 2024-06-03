@@ -16,15 +16,16 @@ const Form = (props) => {
             country: dataBase.country,
             street: dataBase.street,
             subject: dataBase.subject,
+            chatId: tg.initDataUnsafe.user.id,
         }
-        fetch('http://localhost:8000', {
+        fetch('http://localhost:8000/webhook', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-    }, [dataBase]);
+    }, [dataBase, tg]);
 
     useEffect(() => {
         if (tg && tg.WebApp) {

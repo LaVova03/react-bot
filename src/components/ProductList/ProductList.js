@@ -4,14 +4,15 @@ import ProductItem from '../ProductItem/ProductItem';
 import { useTelegramHook } from '../../hooks/useTelegramHook';
 
 const ProductList = (props) => {
-    const { tg } = useTelegramHook();
+    const { tg, queryId } = useTelegramHook();
 
     const [addedItems, setAddedItems] = useState([]);
 
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
-            totalPrice: getTotalPrice(addedItems)
+            totalPrice: getTotalPrice(addedItems),
+            queryId,
         }
         fetch('http://localhost:8000', {
             method: 'POST',
@@ -20,7 +21,7 @@ const ProductList = (props) => {
             },
             body: JSON.stringify(data)
         })
-    }, [addedItems]);
+    }, [addedItems, queryId]);
 
     useEffect(() => {
         if (tg && tg.WebApp) {
