@@ -5,17 +5,26 @@ import { useTelegramHook } from '../../hooks/useTelegramHook';
 const Form = (props) => {
     const { tg } = useTelegramHook();
 
-    const [data, setData] = useState({
+    const [dataBase, setData] = useState({
         country: '',
         street: '',
         subject: 'physical',
     });
 
     const onSendData = useCallback(() => {
-        if (tg) {
-            tg.sendData(JSON.stringify(data));
+        const data = {
+            country: dataBase.country,
+            street: dataBase.street,
+            subject: dataBase.subject,
         }
-    }, [tg, data]);
+        fetch('http://localhost:8000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [dataBase]);
 
     useEffect(() => {
         if (tg && tg.WebApp) {
@@ -32,13 +41,13 @@ const Form = (props) => {
                 text: 'Отправить данные',
             });
 
-            if (!data.country || !data.street) {
+            if (!dataBase.country || !dataBase.street) {
                 tg.MainButton.hide();
             } else {
                 tg.MainButton.show();
             }
         }
-    }, [data, tg]);
+    }, [dataBase, tg]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -56,7 +65,7 @@ const Form = (props) => {
                 name='country'
                 placeholder='Страна'
                 className='input'
-                value={data.country}
+                value={dataBase.country}
                 onChange={handleChange}
             />
             <input
@@ -64,13 +73,13 @@ const Form = (props) => {
                 name='street'
                 placeholder='Улица'
                 className='input'
-                value={data.street}
+                value={dataBase.street}
                 onChange={handleChange}
             />
             <select
                 className='select'
                 name='subject'
-                value={data.subject}
+                value={dataBase.subject}
                 onChange={handleChange}
             >
                 <option value='physical'>Физ.лицо</option>
