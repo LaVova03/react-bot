@@ -12,18 +12,22 @@ const Form = (props) => {
     });
 
     const onSendData = useCallback(() => {
-        tg.setData(JSON.stringify(data));
+        if (tg) {
+            tg.setData(JSON.stringify(data));
+        }
     }, [tg, data]);
 
     useEffect(() => {
-        tg.WebApp.onEvent('mainButtonClicked', onSendData);
-        return () => {
-            tg.WebApp.offEvent('mainButtonClicked', onSendData);
-        };
-    }, [tg.WebApp, onSendData]);
+        if (tg && tg.WebApp) {
+            tg.WebApp.onEvent('mainButtonClicked', onSendData);
+            return () => {
+                tg.WebApp.offEvent('mainButtonClicked', onSendData);
+            };
+        }
+    }, [tg, onSendData]);
 
     useEffect(() => {
-        if (tg?.MainButton) {
+        if (tg && tg.MainButton) {
             tg.MainButton.setParams({
                 text: 'Отправить данные',
             });
