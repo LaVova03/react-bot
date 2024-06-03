@@ -26,10 +26,10 @@ const ProductItem = ({ product, className, onAdd }) => {
 
     return (
         <div
-            className={'product' + className}
+            className={`product ${className}`}
             style={{
-                backgroundColor: buttonColor,
-                color: buttonTextColor,
+                backgroundColor: buttonTextColor,
+                border: `1px solid ${buttonColor}`,
             }}>
             <div
                 className='img'
@@ -41,8 +41,8 @@ const ProductItem = ({ product, className, onAdd }) => {
             <div className='price'>
                 <span>Стоимость:<b>{product.price}</b></span>
             </div>
-            <Button className={'add-btn'} onClick={onAddHandler}>Добавить в корзину</Button>
-        </div >
+            <Button className='add-btn' onClick={onAddHandler}>Добавить в корзину</Button>
+        </div>
     );
 }
 

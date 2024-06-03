@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Button.css';
 import { useTelegramHook } from '../../hooks/useTelegramHook';
 
-const Button = (props) => {
+const Button = ({ className, children, ...props }) => {
     const { tg } = useTelegramHook();
     const [buttonColor, setButtonColor] = useState('#000000');
     const [buttonTextColor, setButtonTextColor] = useState('#FFFFFF');
@@ -21,14 +21,14 @@ const Button = (props) => {
     return (
         <button
             {...props}
-            className='button'
+            className={`button ${className}`}
             style={{
                 backgroundColor: buttonColor,
                 color: buttonTextColor,
             }}
         >
-            {props.children}
-        </button >
+            {children}
+        </button>
     );
 }
 
