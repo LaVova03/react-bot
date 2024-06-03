@@ -69,7 +69,6 @@ const ProductList = (props) => {
 
     return (
         <div className='product_list'>
-            <label>{tg?.user}</label>
             {products.map(item => (
                 <ProductItem
                     key={item.id}

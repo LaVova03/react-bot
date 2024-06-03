@@ -32,7 +32,7 @@ export const useTelegramHook = () => {
         onClose,
         onToggleButton,
         tg,
-        user: tg?.initDataUnsafe?.user,
+        user,
         queryId: tg?.initDataUnsafe?.query_id,
     };
 }
