@@ -6,6 +6,9 @@
 }
 
 .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   background: lightgray;
   height: 100px;
@@ -13,9 +16,10 @@
 }
 
 .img_logo {
-  width: 90%;
   object-fit: contain;
   overflow: hidden;
+  height: 90%;
+  width: 90%;
 }
 
 .description {
