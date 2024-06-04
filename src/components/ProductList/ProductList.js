@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegramHook } from '../../hooks/useTelegramHook';
-import Socks from '../../assets/socks';
-import Jacket from '../../assets/jacket';
-import Jeans from '../../assets/jeans';
-import Pants from '../../assets/pants';
-import Snikers from '../../assets/snikers';
-import Tshirt from '../../assets/t-shirt';
+import Socks from '../../assets/socks.png';
+import Jacket from '../../assets/jacket.png';
+import Jeans from '../../assets/jeans.png';
+import Pants from '../../assets/pants.png';
+import Snikers from '../../assets/snikers.png';
+import Tshirt from '../../assets/t-shirt.png';
 
 const ProductList = (props) => {
     const { tg, queryId } = useTelegramHook();
