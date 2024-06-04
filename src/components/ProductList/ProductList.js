@@ -2,6 +2,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegramHook } from '../../hooks/useTelegramHook';
+import Socks from '../../assets/socks';
+import Jacket from '../../assets/jacket';
+import Jeans from '../../assets/jeans';
+import Pants from '../../assets/pants';
+import Snikers from '../../assets/snikers';
+import Tshirt from '../../assets/t-shirt';
 
 const ProductList = (props) => {
     const { tg, queryId } = useTelegramHook();
@@ -60,12 +66,12 @@ const ProductList = (props) => {
     }
 
     const products = [
-        { id: '1', title: 'Джинсы', price: '5000', description: 'Синего цвета' },
-        { id: '2', title: 'Куртка', price: '4000', description: 'Красного цвета' },
-        { id: '3', title: 'Футболка', price: '3000', description: 'Зеленого цвета' },
-        { id: '4', title: 'Носки', price: '2000', description: 'Желтого цвета' },
-        { id: '5', title: 'Кроссовки', price: '1000', description: 'Черного цвета' },
-        { id: '6', title: 'Брюки', price: '500', description: 'Белого цвета' },
+        { id: '1', title: 'Джинсы', price: '5000', description: 'Синего цвета', img: Jeans },
+        { id: '2', title: 'Куртка', price: '4000', description: 'Красного цвета', img: Jacket },
+        { id: '3', title: 'Футболка', price: '3000', description: 'Зеленого цвета', img: Tshirt },
+        { id: '4', title: 'Носки', price: '2000', description: 'Желтого цвета', img: Socks },
+        { id: '5', title: 'Кроссовки', price: '1000', description: 'Черного цвета', img: Snikers },
+        { id: '6', title: 'Брюки', price: '500', description: 'Белого цвета', img: Pants },
     ];
 
     return (

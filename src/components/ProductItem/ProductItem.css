@@ -12,6 +12,11 @@
   margin: 0 auto;
 }
 
+.img_logo {
+  width: 90%;
+  object-fit: cover;
+}
+
 .description {
   font-size: 0.8em;
 }

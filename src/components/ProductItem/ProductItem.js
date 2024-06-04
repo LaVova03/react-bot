@@ -36,7 +36,9 @@ const ProductItem = ({ product, className, onAdd }) => {
                 className='img'
                 style={{
                     backgroundColor: buttonColor,
-                }} />
+                }} >
+                <img className='img_logo' src={product.img} alt='logo' />
+            </div>
             <div className='title'>{product.title}</div>
             <div className='description'>{product.description}</div>
             <div className='price'>
