@@ -68,10 +68,10 @@ const ProductList = (props) => {
     const products = [
         { id: '1', title: 'Джинсы', price: '5000', description: 'Синего цвета', img: Jeans },
         { id: '2', title: 'Куртка', price: '4000', description: 'Красного цвета', img: Jacket },
-        { id: '3', title: 'Футболка', price: '3000', description: 'Зеленого цвета', img: Tshirt },
-        { id: '4', title: 'Носки', price: '2000', description: 'Желтого цвета', img: Socks },
-        { id: '5', title: 'Кроссовки', price: '1000', description: 'Черного цвета', img: Snikers },
-        { id: '6', title: 'Брюки', price: '500', description: 'Белого цвета', img: Pants },
+        { id: '3', title: 'Футболка', price: '3000', description: 'Желтого цвета', img: Tshirt },
+        { id: '4', title: 'Носки', price: '2000', description: 'Зеленого цвета', img: Socks },
+        { id: '5', title: 'Кроссовки', price: '1000', description: 'Красного цвета', img: Snikers },
+        { id: '6', title: 'Брюки', price: '500', description: 'Черного цвета', img: Pants },
     ];
 
     return (
