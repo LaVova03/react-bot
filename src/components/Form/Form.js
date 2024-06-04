@@ -29,6 +29,7 @@ const Form = (props) => {
 
     useEffect(() => {
         if (tg && tg.WebApp) {
+            console.log(2)
             tg.WebApp.onEvent('mainButtonClicked', onSendData);
             return () => {
                 tg.WebApp.offEvent('mainButtonClicked', onSendData);

@@ -31,6 +31,7 @@ const ProductList = (props) => {
 
     useEffect(() => {
         if (tg && tg.WebApp) {
+            console.log(1)
             tg.WebApp.onEvent('mainButtonClicked', onSendData);
             return () => {
                 tg.WebApp.offEvent('mainButtonClicked', onSendData);
