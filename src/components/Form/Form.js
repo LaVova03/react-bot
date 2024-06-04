@@ -18,7 +18,7 @@ const Form = (props) => {
             subject: dataBase.subject,
             chatId: tg.initDataUnsafe.user.id,
         }
-        fetch('https://telegram-react-node-js-volodymyrs-projects-32ddcccf.vercel.app/webhook', {
+        fetch('https://telegram-react-node-js.vercel.app/webhook', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
