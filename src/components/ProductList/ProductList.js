@@ -20,7 +20,7 @@ const ProductList = (props) => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        fetch('https://telegram-react-node-js.vercel.app/web-data', {
+        fetch('https://telegram-react-node-js-volodymyrs-projects-32ddcccf.vercel.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,7 +31,6 @@ const ProductList = (props) => {
 
     useEffect(() => {
         if (tg && tg.WebApp) {
-            console.log(1)
             tg.WebApp.onEvent('mainButtonClicked', onSendData);
             return () => {
                 tg.WebApp.offEvent('mainButtonClicked', onSendData);
