@@ -19,7 +19,7 @@ const Form = (props) => {
             subject: dataBase.subject,
             chatId: tg.initDataUnsafe.user.id,
         };
-        fetch('http://localhost:8000/webhook', { 
+        fetch('http://localhost:8000/webhook', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,6 +47,7 @@ const Form = (props) => {
 
     useEffect(() => {
         if (tg && tg.MainButton) {
+            alert('Отправить данные')
             tg.MainButton.setParams({
                 text: 'Отправить данные',
             });
