@@ -37,7 +37,7 @@ const Form = (props) => {
             });
         };
 
-        if (tg) {
+        if (tg && tg.WebApp) {
             tg.WebApp.onEvent('mainButtonClicked', onSendData);
             return () => {
                 alert('Done')
