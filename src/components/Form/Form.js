@@ -37,13 +37,13 @@ const Form = (props) => {
             });
         };
 
-        // if (tg && tg.WebApp) {
-        tg.WebApp.onEvent('mainButtonClicked', onSendData);
-        return () => {
-            alert('Done')
-            tg.WebApp.offEvent('mainButtonClicked', onSendData);
-        };
-        // }
+        if (tg) {
+            tg.WebApp.onEvent('mainButtonClicked', onSendData);
+            return () => {
+                alert('Done')
+                tg.WebApp.offEvent('mainButtonClicked', onSendData);
+            };
+        }
     }, [dataBase, tg]);
 
     useEffect(() => {
