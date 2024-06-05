@@ -25,7 +25,7 @@ const ProductList = () => {
             queryId,
         };
         console.log('Sending data:', data); // Проверка данных перед отправкой
-        fetch('https://telegram-react-node-js.vercel.app/web-data', {
+        fetch('http://localhost:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
