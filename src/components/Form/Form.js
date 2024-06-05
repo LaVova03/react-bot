@@ -12,20 +12,28 @@ const Form = (props) => {
     });
 
     const onSendData = useCallback(() => {
-        alert(dataBase, tg.initDataUnsafe.user.id)
+        alert(JSON.stringify(dataBase) + tg.initDataUnsafe.user.id);
         const data = {
             country: dataBase.country,
             street: dataBase.street,
             subject: dataBase.subject,
             chatId: tg.initDataUnsafe.user.id,
-        }
-        fetch('http://localhost:8000', {
+        };
+        fetch('http://localhost:8000', { // исправленный URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
+        }).then(response => {
+            if (response.ok) {
+                alert('Data sent successfully');
+            } else {
+                alert('Failed to send data');
+            }
+        }).catch(error => {
+            alert('Error: ' + error.message);
+        });
     }, [dataBase, tg]);
 
     useEffect(() => {
@@ -43,11 +51,11 @@ const Form = (props) => {
                 text: 'Отправить данные',
             });
 
-            // if (!dataBase.country || !dataBase.street) {
-            //     tg.MainButton.hide();
-            // } else {
-            tg.MainButton.show();
-            // }
+            if (!dataBase.country || !dataBase.street) {
+                tg.MainButton.hide();
+            } else {
+                tg.MainButton.show();
+            }
         }
     }, [dataBase, tg]);
 
