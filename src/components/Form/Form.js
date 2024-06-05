@@ -19,7 +19,7 @@ const Form = (props) => {
             subject: dataBase.subject,
             chatId: tg.initDataUnsafe.user.id,
         };
-        fetch('http://localhost:8000', { // исправленный URL
+        fetch('http://localhost:8000/webhook', { // Исправленный URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
