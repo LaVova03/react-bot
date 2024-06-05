@@ -24,7 +24,6 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         };
-        console.log('Sending data:', data); // Проверка данных перед отправкой
         fetch('http://localhost:8000/web-data', {
             method: 'POST',
             headers: {
