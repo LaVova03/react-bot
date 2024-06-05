@@ -8,11 +8,15 @@ export const useTelegramHook = () => {
         if (window.Telegram?.WebApp) {
             const tgInstance = window.Telegram.WebApp;
             setTg(tgInstance);
-            setUser(tgInstance.initDataUnsafe?.user);
+            if (tgInstance.initDataUnsafe) {
+                setUser(tgInstance.initDataUnsafe.user);
+            }
 
             // Устанавливаем CSS-переменные темы
-            document.documentElement.style.setProperty('--tg-theme-button-color', tgInstance.themeParams.button_color || '#0088cc');
-            document.documentElement.style.setProperty('--tg-theme-button-text-color', tgInstance.themeParams.button_text_color || '#ffffff');
+            if (tgInstance.themeParams) {
+                document.documentElement.style.setProperty('--tg-theme-button-color', tgInstance.themeParams.button_color || '#0088cc');
+                document.documentElement.style.setProperty('--tg-theme-button-text-color', tgInstance.themeParams.button_text_color || '#ffffff');
+            }
         }
     }, []);
 
@@ -21,10 +25,12 @@ export const useTelegramHook = () => {
     };
 
     const onToggleButton = () => {
-        if (tg?.MainButton?.isVisible) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
+        if (tg && tg.MainButton) {
+            if (tg.MainButton.isVisible) {
+                tg.MainButton.hide();
+            } else {
+                tg.MainButton.show();
+            }
         }
     };
 
