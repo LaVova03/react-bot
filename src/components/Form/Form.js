@@ -46,16 +46,15 @@ const Form = (props) => {
     }, [tg, onSendData]);
 
     useEffect(() => {
-        if (tg && tg.MainButton) {
-            alert('Отправить данные')
-            tg.MainButton.setParams({
-                text: 'Отправить данные',
-            });
-
-            if (!dataBase.country || !dataBase.street) {
-                tg.MainButton.hide();
-            } else {
-                tg.MainButton.show();
+        if (!dataBase.country || !dataBase.street) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            if (tg && tg.MainButton) {
+                alert('Отправить данные')
+                tg.MainButton.setParams({
+                    text: 'Отправить данные',
+                });
             }
         }
     }, [dataBase, tg]);
