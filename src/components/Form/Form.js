@@ -13,6 +13,7 @@ const Form = (props) => {
 
     useEffect(() => {
         const onSendData = () => {
+            alert('send')
             const data = {
                 country: dataBase.country,
                 street: dataBase.street,
@@ -35,14 +36,14 @@ const Form = (props) => {
                 alert('Error: ' + error.message);
             });
         };
-        alert(tg)
-        if (tg && tg.WebApp) {
-            tg.WebApp.onEvent('mainButtonClicked', onSendData);
-            return () => {
-                alert('Done')
-                tg.WebApp.offEvent('mainButtonClicked', onSendData);
-            };
-        }
+
+        // if (tg && tg.WebApp) {
+        tg.WebApp.onEvent('mainButtonClicked', onSendData);
+        return () => {
+            alert('Done')
+            tg.WebApp.offEvent('mainButtonClicked', onSendData);
+        };
+        // }
     }, [dataBase, tg]);
 
     useEffect(() => {
