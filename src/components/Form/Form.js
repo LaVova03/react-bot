@@ -11,50 +11,49 @@ const Form = (props) => {
         subject: 'physical',
     });
 
-    const onSendData = useCallback(() => {
-        alert(JSON.stringify(dataBase) + tg.initDataUnsafe.user.id);
-        const data = {
-            country: dataBase.country,
-            street: dataBase.street,
-            subject: dataBase.subject,
-            chatId: tg.initDataUnsafe.user.id,
-        };
-        fetch('http://localhost:8000/webhook', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            if (response.ok) {
-                alert('Data sent successfully');
-            } else {
-                alert('Failed to send data');
-            }
-        }).catch(error => {
-            alert('Error: ' + error.message);
-        });
-    }, [dataBase, tg]);
-
     useEffect(() => {
+        const onSendData = () => {
+            const data = {
+                country: dataBase.country,
+                street: dataBase.street,
+                subject: dataBase.subject,
+                chatId: tg.initDataUnsafe.user.id,
+            };
+            fetch('http://localhost:8000/webhook', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Data sent successfully');
+                } else {
+                    alert('Failed to send data');
+                }
+            }).catch(error => {
+                alert('Error: ' + error.message);
+            });
+        };
+
         if (tg && tg.WebApp) {
             tg.WebApp.onEvent('mainButtonClicked', onSendData);
             return () => {
                 tg.WebApp.offEvent('mainButtonClicked', onSendData);
             };
         }
-    }, [tg, onSendData]);
+    }, [dataBase, tg]);
+
 
     useEffect(() => {
-        if (!dataBase.country || !dataBase.street) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            if (tg && tg.MainButton) {
-                alert('Отправить данные')
-                tg.MainButton.setParams({
-                    text: 'Отправить данные',
-                });
+        if (tg && tg.MainButton) {
+            tg.MainButton.setParams({
+                text: 'Отправить данные',
+            });
+            if (!dataBase.country || !dataBase.street) {
+                tg.MainButton.hide();
+            } else {
+                tg.MainButton.show();
             }
         }
     }, [dataBase, tg]);
