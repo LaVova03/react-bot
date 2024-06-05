@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './Form.css';
 import { useTelegramHook } from '../../hooks/useTelegramHook';
 
-const Form = (props) => {
+const ProductList = (props) => {
     const { tg } = useTelegramHook();
 
     const [dataBase, setData] = useState({
@@ -19,7 +19,7 @@ const Form = (props) => {
             subject: dataBase.subject,
             chatId: tg.initDataUnsafe.user.id,
         };
-        fetch('http://localhost:8000', { // исправленный URL
+        fetch('http://localhost:8000/webhook', {  // Добавьте метод POST и URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,4 +99,4 @@ const Form = (props) => {
     );
 };
 
-export default Form;
+export default ProductList;
