@@ -44,7 +44,6 @@ const Form = (props) => {
         }
     }, [dataBase, tg]);
 
-
     useEffect(() => {
         if (tg && tg.MainButton) {
             tg.MainButton.setParams({
