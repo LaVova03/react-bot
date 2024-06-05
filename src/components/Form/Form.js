@@ -12,13 +12,14 @@ const Form = (props) => {
     });
 
     const onSendData = useCallback(() => {
+        alert(dataBase, tg.initDataUnsafe.user.id)
         const data = {
             country: dataBase.country,
             street: dataBase.street,
             subject: dataBase.subject,
             chatId: tg.initDataUnsafe.user.id,
         }
-        fetch('https://telegram-react-node-js.vercel.app', {
+        fetch('http://localhost:8000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,11 +43,11 @@ const Form = (props) => {
                 text: 'Отправить данные',
             });
 
-            if (!dataBase.country || !dataBase.street) {
-                tg.MainButton.hide();
-            } else {
-                tg.MainButton.show();
-            }
+            // if (!dataBase.country || !dataBase.street) {
+            //     tg.MainButton.hide();
+            // } else {
+            tg.MainButton.show();
+            // }
         }
     }, [dataBase, tg]);
 

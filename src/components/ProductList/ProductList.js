@@ -20,7 +20,7 @@ const ProductList = (props) => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        fetch('https://telegram-react-node-js.vercel.app', {
+        fetch('http://localhost:8000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
