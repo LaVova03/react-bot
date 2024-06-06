@@ -6,6 +6,7 @@ export const useTelegramHook = () => {
 
     useEffect(() => {
         if (window.Telegram?.WebApp) {
+            console.log(window.Telegram)
             const tgInstance = window.Telegram.WebApp;
             setTg(tgInstance);
             if (tgInstance.initDataUnsafe) {
