@@ -24,7 +24,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         };
-        fetch('http://localhost:8000/web-data', {
+        fetch('https://telegram-react-node-js.vercel.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
