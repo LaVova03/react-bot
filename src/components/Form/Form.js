@@ -40,7 +40,6 @@ const Form = (props) => {
         if (tg && tg.onEvent) {
             tg.onEvent('mainButtonClicked', onSendData);
             return () => {
-                alert('Done')
                 tg.offEvent('mainButtonClicked', onSendData);
             };
         }
