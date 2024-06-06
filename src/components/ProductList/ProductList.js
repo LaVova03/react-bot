@@ -30,17 +30,9 @@ const ProductList = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-            .then(response => {
-                if (response.ok) {
-                    alert('Data sent successfully');
-                } else {
-                    alert('Failed to send data');
-                }
-            })
-            .catch(error => {
-                alert('Error: ' + error.message);
-            });
+        }).catch(error => {
+            alert('Error: ' + error.message);
+        });
     }, [addedItems, queryId]);
 
     useEffect(() => {
