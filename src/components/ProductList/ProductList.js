@@ -44,10 +44,10 @@ const ProductList = () => {
     }, [addedItems, queryId]);
 
     useEffect(() => {
-        if (tg && tg.WebApp) {
-            tg.WebApp.onEvent('mainButtonClicked', onSendData);
+        if (tg && tg.onEvent) {
+            tg.onEvent('mainButtonClicked', onSendData);
             return () => {
-                tg.WebApp.offEvent('mainButtonClicked', onSendData);
+                tg.offEvent('mainButtonClicked', onSendData);
             };
         }
     }, [tg, onSendData]);
