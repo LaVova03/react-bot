@@ -13,7 +13,6 @@ const Form = (props) => {
 
     useEffect(() => {
         const onSendData = () => {
-            alert('send')
             const data = {
                 country: dataBase.country,
                 street: dataBase.street,
@@ -26,12 +25,6 @@ const Form = (props) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
-            }).then(response => {
-                if (response.ok) {
-                    alert('Data sent successfully');
-                } else {
-                    alert('Failed to send data');
-                }
             }).catch(error => {
                 alert('Error: ' + error.message);
             });
